@@ -11,13 +11,13 @@ fn main() {
     // 接收命令行参数
     let args: Vec<String> = env::args().collect();
     let config = Config::new(&args).unwrap_or_else(|err| {
-        println!("Problem parse args: {}", err);
+        eprintln!("Problem parse args: {}", err); //标准错误，不会输出到标准输出文件 //标准输出:cargo run > output.txt
         process::exit(1);
     });
 
     // if let 就是match的语法糖
     if let Err(e) = minigrep::run(config) {
-        println!("app err {}", e);
+        eprintln!("app err {}", e);
         process::exit(1);
     }
 }
