@@ -9,8 +9,8 @@ use std::process;
 // 4.处理可能出现的错误
 fn main() {
     // 接收命令行参数
-    let args: Vec<String> = env::args().collect();
-    let config = Config::new(&args).unwrap_or_else(|err| {
+    // let args: Vec<String> = env::args().collect();
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parse args: {}", err); //标准错误，不会输出到标准输出文件 //标准输出:cargo run > output.txt
         process::exit(1);
     });
